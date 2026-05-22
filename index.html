@@ -1399,7 +1399,7 @@ Endpoint = {{Endpoint}}</textarea>
 		
         let currentEndpoint = 'engage.cloudflareclient.com:2408';
         let currentType = 'standard';
-        let currentServerName = 'RU';
+        let currentServerName = 'WARP';
 
         const generateBtn = document.getElementById('generateBtn');
         const downloadLink = document.getElementById('downloadLink');
@@ -1424,9 +1424,13 @@ Endpoint = {{Endpoint}}</textarea>
         }
 
         function getFileName(serverName) {
-            const timeStr = getMoscowTimeString();
-            return `AWG_${serverName}_${timeStr}.conf`;
-        }
+        const timeStr = getMoscowTimeString();
+        let countryCode = serverName;
+        if (serverName === 'WARP') {
+        countryCode = 'RU';
+       }
+       return `AWG_${countryCode}_${timeStr}.conf`;
+     }
 
         function fillTemplateWithStaticValues(configContent, endpoint) {
         let privateKey = '', publicKey = '', address = '';
