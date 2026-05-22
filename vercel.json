@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/warp.js": {
+      "maxDuration": 60
+    }
+  }
+}  
