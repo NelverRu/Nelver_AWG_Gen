@@ -24,12 +24,12 @@
   <br>
 
   ![Line](https://github.com/user-attachments/assets/11f2cf05-34d7-4e45-82d7-93513a06c095)  
-  ### 🔽 **Скачать последние версии AmneziaWG для ПК и телефона можно в репозитории** 🔽
+  ### 🔽 **Скачать AmneziaWG для ПК и телефона можно в репозитории** 🔽
 
   <br>
   
   <a href="https://github.com/NelverRu/Nelver_AWG_Gen/releases" target="_blank">
-    <img src="https://img.shields.io/badge/📦_Репозиторий-FF9800?style=for-the-badge&logo=github&logoColor=white&labelColor=FF9800&color=FF9800" alt="Releases">
+    <img src="https://img.shields.io/badge/📦_Репозиторий-32CD32?style=for-the-badge&logo=github&logoColor=black&labelColor=32CD32&color=32CD32" alt="Releases">
   </a>
 
 ![Line](https://github.com/user-attachments/assets/11f2cf05-34d7-4e45-82d7-93513a06c095)  
