@@ -264,7 +264,6 @@
             #configTemplate { height: 300px; }
             #resultConfig { height: 350px; }
         }
-		/* ========== СТИЛИ ФЛАГОВ ========== */
 .flag {
     display: inline-block;
     width: 24px;
@@ -278,27 +277,22 @@
     margin-right: 8px;
 }
 
-/* Россия 🇷🇺 */
 .flag-ru {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><rect width="9" height="2" fill="white"/><rect y="2" width="9" height="2" fill="%230052b4"/><rect y="4" width="9" height="2" fill="%23d52b1e"/></svg>');
 }
 
-/* Франция 🇫🇷 */
 .flag-fr {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><rect width="3" height="6" fill="%2300559b"/><rect x="3" width="3" height="6" fill="white"/><rect x="6" width="3" height="6" fill="%23ed2939"/></svg>');
 }
 
-/* Польша 🇵🇱 */
 .flag-pl {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><rect width="9" height="3" fill="white"/><rect y="3" width="9" height="3" fill="%23dc143c"/></svg>');
 }
 
-/* Германия 🇩🇪 */
 .flag-de {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><rect width="9" height="2" fill="black"/><rect y="2" width="9" height="2" fill="%23dd0000"/><rect y="4" width="9" height="2" fill="%23ffce00"/></svg>');
 }
 
-/* Для мобильных устройств уменьшаем размер флагов */
 @media (max-width: 768px) {
     .flag {
         width: 20px;
@@ -372,7 +366,7 @@ Endpoint = {{Endpoint}}</textarea>
         </div>
 
         <div class="action-buttons">
-            <button class="action-btn" id="generateBtn">🎲 Сгенерировать конфигурацию</button>
+            <button class="action-btn" id="generateBtn">🎲 Сгенерировать</button>
             <button class="action-btn" id="copyResultBtn">📋 Копировать</button>
             <a href="#" id="downloadLink" class="download-link" style="display: none;">⬇️ Скачать</a>
         </div>
