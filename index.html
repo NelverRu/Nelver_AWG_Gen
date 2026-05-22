@@ -264,6 +264,56 @@
             #configTemplate { height: 300px; }
             #resultConfig { height: 350px; }
         }
+		/* ========== СТИЛИ ФЛАГОВ ========== */
+.flag {
+    display: inline-block;
+    width: 24px;
+    height: 16px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgba(0,0,0,0.3);
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* Россия 🇷🇺 */
+.flag-ru {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><rect width="9" height="2" fill="white"/><rect y="2" width="9" height="2" fill="%230052b4"/><rect y="4" width="9" height="2" fill="%23d52b1e"/></svg>');
+}
+
+/* Франция 🇫🇷 */
+.flag-fr {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><rect width="3" height="6" fill="%2300559b"/><rect x="3" width="3" height="6" fill="white"/><rect x="6" width="3" height="6" fill="%23ed2939"/></svg>');
+}
+
+/* Польша 🇵🇱 */
+.flag-pl {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><rect width="9" height="3" fill="white"/><rect y="3" width="9" height="3" fill="%23dc143c"/></svg>');
+}
+
+/* Германия 🇩🇪 */
+.flag-de {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><rect width="9" height="2" fill="black"/><rect y="2" width="9" height="2" fill="%23dd0000"/><rect y="4" width="9" height="2" fill="%23ffce00"/></svg>');
+}
+
+/* Для мобильных устройств уменьшаем размер флагов */
+@media (max-width: 768px) {
+    .flag {
+        width: 20px;
+        height: 14px;
+        margin-right: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flag {
+        width: 18px;
+        height: 12px;
+        margin-right: 5px;
+    }
+}
     </style>
 </head>
 <body>
@@ -271,14 +321,26 @@
         <h1>⚡ Генератор конфигураций для AmneziaWG ⚡</h1>
         <p class="subtitle">Клиент должен поддерживать протокол AmneziaWG 1.5 или выше!!!</p>
         
-        <div class="country-selector">
-            <div class="country-row">
-                <button class="country-btn" data-type="standard" data-endpoint="engage.cloudflareclient.com:2408" data-server-name="WARP">🇷🇺 Cloudflare WARP</button>
-                <button class="country-btn" data-type="fr" data-endpoint="147.135.212.152:5242" data-server-name="FR">🇫🇷 Roubaix, FR</button>
-                <button class="country-btn" data-type="pl" data-endpoint="51.38.153.32:5242" data-server-name="PL">🇵🇱 Warsaw, PL</button>
-                <button class="country-btn" data-type="de" data-endpoint="51.38.107.252:5242" data-server-name="DE">🇩🇪 Frankfurt, DE</button>
-            </div>
-        </div>
+<div class="country-selector">
+    <div class="country-row">
+        <button class="country-btn" data-type="standard" data-endpoint="engage.cloudflareclient.com:2408" data-server-name="WARP">
+            <span class="flag flag-ru"></span>
+            Cloudflare WARP
+        </button>
+        <button class="country-btn" data-type="fr" data-endpoint="147.135.212.152:5242" data-server-name="FR">
+            <span class="flag flag-fr"></span>
+            Roubaix, FR
+        </button>
+        <button class="country-btn" data-type="pl" data-endpoint="51.38.153.32:5242" data-server-name="PL">
+            <span class="flag flag-pl"></span>
+            Warsaw, PL
+        </button>
+        <button class="country-btn" data-type="de" data-endpoint="51.38.107.252:5242" data-server-name="DE">
+            <span class="flag flag-de"></span>
+            Frankfurt, DE
+        </button>
+    </div>
+</div>
 
         <div class="template-section">
             <label class="file-label">📝 Шаблон конфигурации (можно редактировать):</label>
