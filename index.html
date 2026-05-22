@@ -321,6 +321,7 @@ Endpoint = {{Endpoint}}</textarea>
             <label class="file-label">✅ Сгенерированная конфигурация (предпросмотр):</label>
             <textarea id="resultConfig" readonly style="height:600px; background: rgba(0,0,0,0.3);"></textarea>
         </div>
+		
     </div>
 
     <script>
@@ -1385,7 +1386,6 @@ Endpoint = {{Endpoint}}</textarea>
             template = template.replace('{{I3}}', STATIC_VALUES.I3);
             template = template.replace('{{I4}}', STATIC_VALUES.I4);
             template = template.replace('{{I5}}', STATIC_VALUES.I5);
-            
             return template;
         }
 
@@ -1480,7 +1480,6 @@ Endpoint = {{Endpoint}}</textarea>
 
         generateBtn.addEventListener('click', generateConfig);
 
-        // Инициализация
         const defaultBtn = document.querySelector('.country-btn[data-type="standard"]');
         if (defaultBtn) {
             defaultBtn.classList.add('active');
