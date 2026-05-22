@@ -1366,14 +1366,13 @@ Endpoint = {{Endpoint}}</textarea>
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 4000);
         }
-
-        function getMoscowTimeString() {
+        
+		function getMoscowTimeString() {
             const now = new Date();
             const moscowTime = new Date(now.getTime() + (3 * 60 * 60 * 1000));
             const hours = String(moscowTime.getUTCHours()).padStart(2, '0');
             const minutes = String(moscowTime.getUTCMinutes()).padStart(2, '0');
-            const seconds = String(moscowTime.getUTCSeconds()).padStart(2, '0');
-            return `${hours}_${minutes}_${seconds}`;
+            return `${hours}_${minutes}`;
         }
 
         function getFileName(serverName) {
