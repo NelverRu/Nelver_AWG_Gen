@@ -1,12 +1,26 @@
 import nacl from "tweetnacl";
 import { Buffer } from "buffer";
 
+const BACKUP_API_PREFIXES = [
+  'v0i1909051800', 
+  'v0a1909051800',  
+  'v0b1909051800',  
+  'v0c1909051800',  
+  'v0i1604021500',  
+  'v0a1604021500',  
+];  
+
 class CloudflareWarpClient {
-  static BASE_URL = 'https://api.cloudflareclient.com/v0i1909051800';
+  static BASE_URL = 'https://api.cloudflareclient.com';
   static DEFAULT_HEADERS = {
     'User-Agent': 'okhttp/3.12.1',
     'Content-Type': 'application/json',
   };
+
+  constructor() {
+    this.currentPrefixIndex = 0;
+    this.baseUrl = `${CloudflareWarpClient.BASE_URL}/${BACKUP_API_PREFIXES[0]}`;
+  }
 
   async registerClient(publicKey) {
     const requestBody = {
@@ -18,17 +32,37 @@ class CloudflareWarpClient {
       locale: 'en_US',
     };
 
-    const response = await this.makeRequest('POST', 'reg', requestBody);
+    for (let i = 0; i < BACKUP_API_PREFIXES.length; i++) {
+      try {
+        const prefix = BACKUP_API_PREFIXES[i];
+        const url = `${CloudflareWarpClient.BASE_URL}/${prefix}/reg`;
+        
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: CloudflareWarpClient.DEFAULT_HEADERS,
+          body: JSON.stringify(requestBody)
+        });
 
-    if (!response.result?.id || !response.result?.token) {
-      throw new Error('Invalid registration response structure');
+        if (response.status === 429) {
+          continue;
+        }
+
+        const data = await response.json();
+
+        if (data.success !== false && data.result?.id && data.result?.token) {
+          this.baseUrl = `${CloudflareWarpClient.BASE_URL}/${prefix}`;
+          return {
+            id: data.result.id,
+            token: data.result.token,
+          };
+        }
+      } catch (error) {
+        continue;
+      }
     }
 
-    return {
-      id: response.result.id,
-      token: response.result.token,
-    };
-  }  
+    throw new Error('All API prefixes failed');
+  }
 
   async enableWarp(clientId, token) {
     const headers = {
@@ -36,32 +70,23 @@ class CloudflareWarpClient {
       'Authorization': `Bearer ${token}`,
     };
 
-    const response = await this.makeRequest('PATCH', `reg/${clientId}`, { warp_enabled: true }, headers);
-
-    if (!response.result?.config?.peers?.[0] || !response.result?.config?.interface) {
-      throw new Error('Invalid WARP configuration response structure');
-    }
-
-    return response;
-  }
-
-  async makeRequest(method, endpoint, body = null, customHeaders = null) {
-    const url = `${CloudflareWarpClient.BASE_URL}/${endpoint}`;
-    const headers = customHeaders || CloudflareWarpClient.DEFAULT_HEADERS;
-
-    const options = { method, headers };
-
-    if (body && (method === 'POST' || method === 'PATCH')) {
-      options.body = JSON.stringify(body);
-    }
-
-    const response = await fetch(url, options);
+    const response = await fetch(`${this.baseUrl}/reg/${clientId}`, {
+      method: 'PATCH',
+      headers: headers,
+      body: JSON.stringify({ warp_enabled: true })
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
 
-    return await response.json();
+    const data = await response.json();
+
+    if (!data.result?.config?.peers?.[0] || !data.result?.config?.interface) {
+      throw new Error('Invalid WARP configuration response structure');
+    }
+
+    return data;
   }
 }
 
@@ -91,7 +116,7 @@ class WarpConfigBuilder {
     return `${interfaceSection}\n\n${peerSection}`;
   }
 
-static buildInterfaceSection(params) {
+  static buildInterfaceSection(params) {
     const { privateKey, clientIPv4, clientIPv6, deviceType } = params;
     const profile = this.DEVICE_PROFILES[deviceType];
 
@@ -128,7 +153,6 @@ static buildInterfaceSection(params) {
   }
 }
 
-// Маппинг конечных точек
 const ENDPOINT_MAP = {
   'standard': { deviceType: 'computer', endpoint: 'engage.cloudflareclient.com:2408', name: 'Cloudflare WARP' },
   'fr':       { deviceType: 'computer', endpoint: '147.135.212.152:5242', name: 'Roubaix, FR' },
@@ -159,21 +183,15 @@ export default async function handler(req, res) {
       throw new Error(`Invalid config type: ${configKey}`);
     }
 
-    console.log(`Generating config: ${config.name} (endpoint: ${config.endpoint})`);
-
-    // Генерация ключей
     const keyPair = CryptoUtils.generateKeyPair();
 
-    // Регистрация клиента в Cloudflare
     const cloudflareClient = new CloudflareWarpClient();
     const { id: clientId, token } = await cloudflareClient.registerClient(keyPair.publicKey);
     const warpConfig = await cloudflareClient.enableWarp(clientId, token);
 
-    // Извлечение параметров
     const peer = warpConfig.result.config.peers[0];
     const interfaceConfig = warpConfig.result.config.interface;
 
-    // Построение финального конфига
     const finalConfig = WarpConfigBuilder.build({
       privateKey: keyPair.privateKey,
       publicKey: peer.public_key,
@@ -192,8 +210,6 @@ export default async function handler(req, res) {
       type: configKey
     });
   } catch (error) {
-    console.error('Error generating config:', error);
-
     return res.status(500).json({
       success: false,
       message: error.message || 'Ошибка при генерации конфигурации',
