@@ -158,42 +158,6 @@
             flex: 2;
         }
 
-        .external-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: stretch;
-            min-width: 140px;
-        }
-
-        .external-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-            color: #6ad500;
-            padding: 8px 16px;
-            border-radius: 32px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-decoration: none;
-            text-align: center;
-            white-space: nowrap;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(255, 255, 255, 0.1) inset;
-        }
-
-        .external-btn:hover {
-            background: linear-gradient(145deg, #353535, #252525);
-            border-bottom: 2px solid rgba(106, 213, 0, 0.5);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(106, 213, 0, 0.2) inset;
-        }
-
         .action-btn, .download-link {
             display: inline-flex;
             align-items: center;
@@ -291,8 +255,6 @@
         @media (max-width: 900px) {
             .country-btn { min-width: 130px; padding: 10px 20px; font-size: 0.95rem; }
             .action-btn, .download-link { min-width: 180px; padding: 12px 24px; font-size: 1rem; }
-            .external-btn { padding: 7px 14px; font-size: 0.8rem; white-space: nowrap; }
-            .external-links { min-width: 120px; }
         }
 
         @media (max-width: 768px) {
@@ -303,18 +265,14 @@
             #configTemplate { height: 350px; }
             #resultConfig { height: 400px; }
             .action-wrapper { flex-direction: column; align-items: stretch; }
-            .external-links { flex-direction: row; justify-content: center; gap: 12px; min-width: auto; order: 2; margin-top: 8px; }
-            .action-buttons { order: 1; justify-content: center; }
+            .action-buttons { justify-content: center; }
             .action-btn, .download-link { min-width: 160px; padding: 10px 20px; font-size: 0.95rem; }
-            .external-btn { padding: 8px 20px; font-size: 0.85rem; flex: 1; text-align: center; }
         }
 
         @media (max-width: 600px) {
             .country-btn { min-width: calc(50% - 8px); flex: 1 1 auto; }
             .action-buttons { flex-direction: column; align-items: center; }
             .action-btn, .download-link { min-width: 100%; width: 100%; padding: 14px; }
-            .external-links { flex-direction: column; width: 100%; gap: 8px; margin-top: 12px; }
-            .external-btn { width: 100%; justify-content: center; padding: 10px; }
         }
 
         @media (max-width: 480px) {
@@ -373,27 +331,27 @@
 <body>
     <div class="container">
         <h1>⚡ Генератор конфигураций для AmneziaWG ⚡</h1>
-		<img class="logo-image" src="https://warp-generator.github.io/logo.svg" alt="logo" onerror="this.style.display='none'">
-<div class="country-selector">
-    <div class="country-row">
-        <button class="country-btn" data-type="standard" data-endpoint="engage.cloudflareclient.com:2408" data-server-name="WARP">
-            <span class="flag flag-ru"></span>
-            Россия
-        </button>
-        <button class="country-btn" data-type="fr" data-endpoint="147.135.212.152:5242" data-server-name="FR">
-            <span class="flag flag-fr"></span>
-            Франция
-        </button>
-        <button class="country-btn" data-type="pl" data-endpoint="51.38.153.32:5242" data-server-name="PL">
-            <span class="flag flag-pl"></span>
-            Польша
-        </button>
-        <button class="country-btn" data-type="de" data-endpoint="51.38.107.252:5242" data-server-name="DE">
-            <span class="flag flag-de"></span>
-            Германия
-        </button>
-    </div>
-</div>
+        <img class="logo-image" src="https://warp-generator.github.io/logo.svg" alt="logo" onerror="this.style.display='none'">
+        <div class="country-selector">
+            <div class="country-row">
+                <button class="country-btn" data-type="standard" data-endpoint="engage.cloudflareclient.com:2408" data-server-name="WARP">
+                    <span class="flag flag-ru"></span>
+                    Россия
+                </button>
+                <button class="country-btn" data-type="fr" data-endpoint="147.135.212.152:5242" data-server-name="FR">
+                    <span class="flag flag-fr"></span>
+                    Франция
+                </button>
+                <button class="country-btn" data-type="pl" data-endpoint="51.38.153.32:5242" data-server-name="PL">
+                    <span class="flag flag-pl"></span>
+                    Польша
+                </button>
+                <button class="country-btn" data-type="de" data-endpoint="51.38.107.252:5242" data-server-name="DE">
+                    <span class="flag flag-de"></span>
+                    Германия
+                </button>
+            </div>
+        </div>
 
         <div class="template-section">
             <label class="file-label">📝 Шаблон конфигурации (можно редактировать):</label>
@@ -422,454 +380,430 @@ PublicKey = {{PublicKey}}
 AllowedIPs = 0.0.0.0/0, ::/0
 PersistentKeepalive = 25				
 Endpoint = {{Endpoint}}</textarea>
-       </div>
-            <div style="position: relative; display: flex; justify-content: center; margin: 20px 0;">
+        </div>
+        <div style="position: relative; display: flex; justify-content: center; margin: 20px 0;">
             <div class="action-buttons" style="justify-content: center;">
-            <button class="action-btn" id="generateBtn">🎲 Сгенерировать</button>
-            <a href="#" id="downloadLink" class="download-link" style="display: none;">⬇️ Скачать</a>
+                <button class="action-btn" id="generateBtn">🎲 Сгенерировать</button>
+                <a href="#" id="downloadLink" class="download-link" style="display: none;">⬇️ Скачать</a>
+            </div>
         </div>
-            <div class="external-links" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; flex-direction: column; gap: 10px;">
-            <a href="https://ifconfig.co" target="_blank" rel="noopener noreferrer" class="external-btn" style="font-size: 0.85rem; padding: 8px 16px;">🌍 Проверка IP адреса</a>
-            <a href="http://cabinet.speedtestcustom.com" target="_blank" rel="noopener noreferrer" class="external-btn" style="font-size: 0.85rem; padding: 8px 16px;">⚡ Проверка скорости</a>
-        </div>
-     </div>
-            <div class="result-section">
+        <div class="result-section">
             <label class="file-label">✅ Сгенерированная конфигурация (предпросмотр):</label>
             <textarea id="resultConfig" readonly style="height:600px; background: rgba(0,0,0,0.3);"></textarea>
-            </div>
+        </div>
     
-	  <script>  
+        <script>
+            // ========== СТАТИЧНОЕ ЗНАЧЕНИЕ I1 ДЛЯ ЗАРУБЕЖНЫХ КОНФИГУРАЦИЙ ==========
+            const STATIC_I1 = '<b 0xce000000010897a297ecc34cd6dd000044d0ec2e2e1ea2991f467ace4222129b5a098823784694b4897b9986ae0b7280135fa85e196d9ad980b150122129ce2a9379531b0fd3e871ca5fdb883c369832f730e272d7b8b74f393f9f0fa43f11e510ecb2219a52984410c204cf875585340c62238e14ad04dff382f2c200e0ee22fe743b9c6b8b043121c5710ec289f471c91ee414fca8b8be8419ae8ce7ffc53837f6ade262891895f3f4cecd31bc93ac5599e18e4f01b472362b8056c3172b513051f8322d1062997ef4a383b01706598d08d48c221d30e74c7ce000cdad36b706b1bf9b0607c32ec4b3203a4ee21ab64df336212b9758280803fcab14933b0e7ee1e04a7becce3e2633f4852585c567894a5f9efe9706a151b615856647e8b7dba69ab357b3982f554549bef9256111b2d67afde0b496f16962d4957ff654232aa9e845b61463908309cfd9de0a6abf5f425f577d7e5f6440652aa8da5f73588e82e9470f3b21b27b28c649506ae1a7f5f15b876f56abc4615f49911549b9bb39dd804fde182bd2dcec0c33bad9b138ca07d4a4a1650a2c2686acea05727e2a78962a840ae428f55627516e73c83dd8893b02358e81b524b4d99fda6df52b3a8d7a5291326e7ac9d773c5b43b8444554ef5aea104a738ed650aa979674bbed38da58ac29d87c29d387d80b526065baeb073ce65f075ccb56e47533aef357dceaa8293a523c5f6f790be90e4731123d3c6152a70576e90b4ab5bc5ead01576c68ab633ff7d36dcde2a0b2c68897e1acfc4d6483aaaeb635dd63c96b2b6a7a2bfe042f6aed82e5363aa850aace12ee3b1a93f30d8ab9537df483152a5527faca21efc9981b304f11fc95336f5b9637b174c5a0659e2b22e159a9fed4b8e93047371175b1d6d9cc8ab745f3b2281537d1c75fb9451871864efa5d184c38c185fd203de206751b92620f7c369e031d2041e152040920ac2c5ab5340bfc9d0561176abf10a147287ea90758575ac6a9f5ac9f390d0d5b23ee12af583383d994e22c0cf42383834bcd3ada1b3825a0664d8f3fb678261d57601ddf94a8a68a7c273a18c08aa99c7ad8c6c42eab67718843597ec9930457359dfdfbce024afc2dcf9348579a57d8d3490b2fa99f278f1c37d87dad9b221acd575192ffae1784f8e60ec7cee4068b6b988f0433d96d6a1b1865f4e155e9fe020279f434f3bf1bd117b717b92f6cd1cc9bea7d45978bcc3f24bda631a36910110a6ec06da35f8966c9279d130347594f13e9e07514fa370754d1424c0a1545c5070ef9fb2acd14233e8a50bfc5978b5bdf8bc1714731f798d21e2004117c61f2989dd44f0cf027b27d4019e81ed4b5c31db347c4a3a4d85048d7093cf16753d7b0d15e078f5c7a5205dc2f87e330a1f716738dce1c6180e9d02869b5546f1c4d2748f8c90d9693cba4e0079297d22fd61402dea32ff0eb69ebd65a5d0b687d87e3a8b2c42b648aa723c7c7daf37abcc4bb85caea2ee8f55bec20e913b3324ab8f5c3304f820d42ad1b9f2ffc1a3af9927136b4419e1e579ab4c2ae3c776d293d397d575df181e6cae0a4ada5d67ecea171cca3288d57c7bbdaee3befe745fb7d634f70386d873b90c4d6c6596bb65af68f9e5121e67ebf0d89d3c909ceedfb32ce9575a7758ff080724e1ab5d5f43074ecb53a479af21ed03d7b6899c36631c0166f9d47e5e1d4528a5d3d3f744029c4b1c190cbfbad06f5f83f7ad0429fa9a2719c56ffe3783460e166de2d8>';
 
-// ========== СТАТИЧНОЕ ЗНАЧЕНИЕ I1 ДЛЯ ЗАРУБЕЖНЫХ КОНФИГУРАЦИЙ ==========
-const STATIC_I1 = '<b 0xce000000010897a297ecc34cd6dd000044d0ec2e2e1ea2991f467ace4222129b5a098823784694b4897b9986ae0b7280135fa85e196d9ad980b150122129ce2a9379531b0fd3e871ca5fdb883c369832f730e272d7b8b74f393f9f0fa43f11e510ecb2219a52984410c204cf875585340c62238e14ad04dff382f2c200e0ee22fe743b9c6b8b043121c5710ec289f471c91ee414fca8b8be8419ae8ce7ffc53837f6ade262891895f3f4cecd31bc93ac5599e18e4f01b472362b8056c3172b513051f8322d1062997ef4a383b01706598d08d48c221d30e74c7ce000cdad36b706b1bf9b0607c32ec4b3203a4ee21ab64df336212b9758280803fcab14933b0e7ee1e04a7becce3e2633f4852585c567894a5f9efe9706a151b615856647e8b7dba69ab357b3982f554549bef9256111b2d67afde0b496f16962d4957ff654232aa9e845b61463908309cfd9de0a6abf5f425f577d7e5f6440652aa8da5f73588e82e9470f3b21b27b28c649506ae1a7f5f15b876f56abc4615f49911549b9bb39dd804fde182bd2dcec0c33bad9b138ca07d4a4a1650a2c2686acea05727e2a78962a840ae428f55627516e73c83dd8893b02358e81b524b4d99fda6df52b3a8d7a5291326e7ac9d773c5b43b8444554ef5aea104a738ed650aa979674bbed38da58ac29d87c29d387d80b526065baeb073ce65f075ccb56e47533aef357dceaa8293a523c5f6f790be90e4731123d3c6152a70576e90b4ab5bc5ead01576c68ab633ff7d36dcde2a0b2c68897e1acfc4d6483aaaeb635dd63c96b2b6a7a2bfe042f6aed82e5363aa850aace12ee3b1a93f30d8ab9537df483152a5527faca21efc9981b304f11fc95336f5b9637b174c5a0659e2b22e159a9fed4b8e93047371175b1d6d9cc8ab745f3b2281537d1c75fb9451871864efa5d184c38c185fd203de206751b92620f7c369e031d2041e152040920ac2c5ab5340bfc9d0561176abf10a147287ea90758575ac6a9f5ac9f390d0d5b23ee12af583383d994e22c0cf42383834bcd3ada1b3825a0664d8f3fb678261d57601ddf94a8a68a7c273a18c08aa99c7ad8c6c42eab67718843597ec9930457359dfdfbce024afc2dcf9348579a57d8d3490b2fa99f278f1c37d87dad9b221acd575192ffae1784f8e60ec7cee4068b6b988f0433d96d6a1b1865f4e155e9fe020279f434f3bf1bd117b717b92f6cd1cc9bea7d45978bcc3f24bda631a36910110a6ec06da35f8966c9279d130347594f13e9e07514fa370754d1424c0a1545c5070ef9fb2acd14233e8a50bfc5978b5bdf8bc1714731f798d21e2004117c61f2989dd44f0cf027b27d4019e81ed4b5c31db347c4a3a4d85048d7093cf16753d7b0d15e078f5c7a5205dc2f87e330a1f716738dce1c6180e9d02869b5546f1c4d2748f8c90d9693cba4e0079297d22fd61402dea32ff0eb69ebd65a5d0b687d87e3a8b2c42b648aa723c7c7daf37abcc4bb85caea2ee8f55bec20e913b3324ab8f5c3304f820d42ad1b9f2ffc1a3af9927136b4419e1e579ab4c2ae3c776d293d397d575df181e6cae0a4ada5d67ecea171cca3288d57c7bbdaee3befe745fb7d634f70386d873b90c4d6c6596bb65af68f9e5121e67ebf0d89d3c909ceedfb32ce9575a7758ff080724e1ab5d5f43074ecb53a479af21ed03d7b6899c36631c0166f9d47e5e1d4528a5d3d3f744029c4b1c190cbfbad06f5f83f7ad0429fa9a2719c56ffe3783460e166de2d8>';
-
-// ========== ДИНАМИЧЕСКАЯ ГЕНЕРАЦИЯ ПАКЕТОВ I1-I5 ==========
-class DynamicPacketGenerator {
-    constructor() {
-this.domains = [
-    "yandex.ru", "ya.ru", "vk.com", "mail.ru", "ok.ru", 
-    "dzen.ru", "rambler.ru", "avito.ru", "wildberries.ru", 
-    "ozon.ru", "gosuslugi.ru", "sberbank.ru", "sber.ru",
-    "tbank.ru", "russian.rt.com", "ria.ru", "tass.ru", 
-    "lenta.ru", "rbc.ru", "kremlin.ru", "government.ru",
-    "cbr.ru", "nalog.gov.ru", "edu.gov.ru", "mchs.gov.ru",
-    "minzdrav.gov.ru", "mil.ru", "rosatom.ru", "aeroflot.ru",
-    "russianrailways.ru", "mos.ru", "spb.ru",
-	"google.com", "youtube.com", "cloudflare.com", "apple.com", 
-    "microsoft.com", "facebook.com", "instagram.com", "whatsapp.com",
-    "wikipedia.org", "amazon.com", "bing.com", "reddit.com", 
-    "chatgpt.com", "netflix.com", "tiktok.com", "akamai.com", 
-    "fastly.com", "github.com", "stackoverflow.com", "zoom.us",
-    "discord.com", "telegram.org", "spotify.com", "twitch.tv"
-];
-        
-this.paths = [
-    "/", "/mail", "/search", "/index.html", "/api/v1/status", 
-    "/favicon.ico", "/images", "/drive", "/photos", "/video",
-    "/news", "/login", "/account", "/settings", "/auth",
-    "/static/style.css", "/js/main.js", "/robots.txt", "/sitemap.xml"
-];
-        
-this.userAgents = [
-    // Windows - Chrome
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 11.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
-    // Windows - Firefox
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
-    // Windows - Edge
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0",
-    // macOS - Chrome
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
-    // macOS - Firefox
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:120.0) Gecko/20100101 Firefox/120.0",
-    // macOS - Safari
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15",
-    // Linux
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0",
-    // Android - Chrome
-    "Mozilla/5.0 (Linux; Android 13; SM-S911B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.210 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.71 Mobile Safari/537.36",
-    // Android - Firefox
-    "Mozilla/5.0 (Android 13; Mobile; rv:120.0) Gecko/120.0 Firefox/120.0",
-    // iOS - Safari
-    "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Mobile/15E148 Safari/604.1",
-    "Mozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Mobile/15E148 Safari/604.1",
-    // iOS - Chrome
-    "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/120.0.6099.119 Mobile/15E148 Safari/604.1"
-];
-    }
-    
-    randInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    
-    randBytes(n) {
-        const bytes = new Uint8Array(n);
-        crypto.getRandomValues(bytes);
-        return bytes;
-    }
-    
-    toHex(bytes) {
-        return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-    
-    randHex(n) {
-        return this.toHex(this.randBytes(n));
-    }
-    
-    randIp() {
-        return `${this.randInt(10, 240)}.${this.randInt(1, 255)}.${this.randInt(1, 255)}.${this.randInt(1, 255)}`;
-    }
-    
-    randPort() {
-        return this.randInt(1024, 65535);
-    }
-    
-    // I1: SIP REGISTER
-    makeSipRegister() {
-        const ip = this.randIp();
-        const srcPort = this.randPort();
-        const branch = this.randHex(26);
-        const callId = this.randHex(16);
-        const fromTag = this.randHex(8);
-        const domain = this.domains[Math.floor(Math.random() * this.domains.length)];
-        const expires = this.randInt(3600, 7200);
-        const cseq = this.randInt(1, 10);
-        
-        const sipUAs = ["Bria 5.0.0", "Zoiper 5.0.0", "MicroSIP/3.0.0", "Linphone/5.0.0"];
-        const ua = sipUAs[Math.floor(Math.random() * sipUAs.length)];
-        
-        const body = `REGISTER sip:${domain} SIP/2.0\r\n` +
-                    `Via: SIP/2.0/UDP ${ip}:${srcPort};branch=z9hG4bK${branch}\r\n` +
-                    `Max-Forwards: 70\r\n` +
-                    `To: <sip:user@${domain}>\r\n` +
-                    `From: <sip:user@${domain}>;tag=${fromTag}\r\n` +
-                    `Call-ID: ${callId}\r\n` +
-                    `CSeq: ${cseq} REGISTER\r\n` +
-                    `Contact: <sip:user@${ip}:${srcPort}>\r\n` +
-                    `User-Agent: ${ua}\r\n` +
-                    `Expires: ${expires}\r\n` +
-                    `Content-Length: 0\r\n\r\n`;
-        
-        const bytes = new TextEncoder().encode(body);
-        return `<b 0x${this.toHex(bytes)}>`;
-    }
-    
-    // I2: TLS ClientHello
-    makeTlsClientHello() {
-        const sni = this.domains[Math.floor(Math.random() * this.domains.length)];
-        const sniBytes = new TextEncoder().encode(sni);
-        const clientRandom = this.randBytes(32);
-        
-        // Формируем SNI extension
-        const sniExt = [
-            0x00, 0x00,  // server_name
-            (sniBytes.length + 5) >> 8, (sniBytes.length + 5) & 0xFF,
-            (sniBytes.length + 3) >> 8, (sniBytes.length + 3) & 0xFF,
-            0x00,  // host_name
-            sniBytes.length >> 8, sniBytes.length & 0xFF,
-            ...sniBytes
-        ];
-        
-        // supported_groups extension
-        const sgExt = [0x00, 0x0A, 0x00, 0x0A, 0x00, 0x08, 0x7B, 0x88, 0x65, 0x2C, 0xE4, 0x6B, 0x47, 0xAB];
-        
-        // ec_point_formats extension
-        const epExt = [0x00, 0x0B, 0x00, 0x04, 0x03, 0x00, 0x01, 0x02];
-        
-        const extensions = [...sniExt, ...sgExt, ...epExt];
-        const extLen = extensions.length;
-        
-        // Handshake body
-        const helloBody = [
-            ...clientRandom,
-            0x00,  // session id length
-            0x00, 0x04,  // cipher suites length (2 ciphers)
-            0xC0, 0x2B,  // TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-            0xC0, 0x2C,  // TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-            0x01, 0x00,  // compression methods
-            extLen >> 8, extLen & 0xFF,
-            ...extensions
-        ];
-        
-        const helloLen = helloBody.length;
-        
-        // Handshake header
-        const handshake = [
-            0x01,  // ClientHello
-            0x00, 0x00, helloLen & 0xFF,
-            0x03, 0x03,  // TLS 1.2
-            ...helloBody
-        ];
-        
-        const hsLen = handshake.length;
-        
-        // TLS Record
-        const record = [
-            0x16, 0x03, 0x03,  // record type, TLS 1.2
-            hsLen >> 8, hsLen & 0xFF,
-            ...handshake
-        ];
-        
-        return `<b 0x${this.toHex(new Uint8Array(record))}>`;
-    }
-    
-    // I3: TLS ServerHello
-    makeTlsServerHello() {
-        const serverRandom = this.randBytes(32);
-        const ciphers = [0xC02F, 0xC030, 0xCCA8, 0x009C, 0x009D, 0xC013, 0xC014];
-        const cipher = ciphers[Math.floor(Math.random() * ciphers.length)];
-        
-        const helloBody = [
-            0x03, 0x03,  // TLS 1.2
-            ...serverRandom,
-            0x00,  // session id length
-            cipher >> 8, cipher & 0xFF,  // cipher suite
-            0x00,  // compression: null
-            0x00, 0x00  // no extensions
-        ];
-        
-        const handshake = [
-            0x02,  // ServerHello
-            0x00, 0x00, helloBody.length,
-            0x03, 0x03,
-            ...serverRandom.slice(0, 28),
-            0x00,
-            cipher >> 8, cipher & 0xFF,
-            0x00
-        ];
-        
-        const record = [
-            0x16, 0x03, 0x03,
-            handshake.length >> 8, handshake.length & 0xFF,
-            ...handshake
-        ];
-        
-        return `<b 0x${this.toHex(new Uint8Array(record))}>`;
-    }
-    
-    // I4: TLS AppData
-    makeTlsAppData() {
-        const dhPart = this.randBytes(128);
-        const finishedData = this.randBytes(52);
-        
-        const keyExchangeBody = [0x10, 0x00, 0x00, 0x80, ...dhPart];
-        const keyExchangeRecord = [0x16, 0x03, 0x03, 0x00, keyExchangeBody.length, ...keyExchangeBody];
-        const ccsRecord = [0x14, 0x03, 0x03, 0x00, 0x01, 0x01];
-        const finishedRecord = [0x16, 0x03, 0x03, 0x00, finishedData.length, ...finishedData];
-        
-        const full = [...keyExchangeRecord, ...ccsRecord, ...finishedRecord];
-        return `<b 0x${this.toHex(new Uint8Array(full))}>`;
-    }
-    
-    // I5: HTTP GET
-    makeHttpGet() {
-        const host = this.domains[Math.floor(Math.random() * this.domains.length)];
-        const path = this.paths[Math.floor(Math.random() * this.paths.length)];
-        const ua = this.userAgents[Math.floor(Math.random() * this.userAgents.length)];
-        
-        const body = `GET ${path} HTTP/1.1\r\n` +
-                    `Host: ${host}\r\n` +
-                    `User-Agent: ${ua}\r\n` +
-                    `Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\r\n` +
-                    `Accept-Language: en-US,en;q=0.5\r\n` +
-                    `Accept-Encoding: gzip, deflate, br\r\n` +
-                    `Connection: keep-alive\r\n\r\n`;
-        
-        const bytes = new TextEncoder().encode(body);
-        return `<b 0x${this.toHex(bytes)}>`;
-    }
-    
-    generateAll() {
-        return {
-            i1: this.makeSipRegister(),
-            i2: this.makeTlsClientHello(),
-            i3: this.makeTlsServerHello(),
-            i4: this.makeTlsAppData(),
-            i5: this.makeHttpGet()
-        };
-    }
-}
-
-// Инициализируем генератор
-const packetGen = new DynamicPacketGenerator();
-
-// Функция для получения пакетов
-function getDynamicPackets() {
-    return packetGen.generateAll();
-}
-
-// ========== ОСНОВНАЯ ЛОГИКА ПРИЛОЖЕНИЯ ==========
-
-let currentEndpoint = 'engage.cloudflareclient.com:2408';
-let currentType = 'standard';
-let currentServerName = 'WARP';
-
-const generateBtn = document.getElementById('generateBtn');
-const downloadLink = document.getElementById('downloadLink');
-const configTemplate = document.getElementById('configTemplate');
-const resultConfig = document.getElementById('resultConfig');
-const countryButtons = document.querySelectorAll('.country-btn');
-
-function showError(message) {
-    const toast = document.createElement('div');
-    toast.className = 'error-toast';
-    toast.textContent = `❌ ${message}`;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 4000);
-}
-
-function getMoscowTimeString() {
-    const now = new Date();
-    const moscowTime = new Date(now.getTime() + (3 * 60 * 60 * 1000));
-    const hours = String(moscowTime.getUTCHours()).padStart(2, '0');
-    const minutes = String(moscowTime.getUTCMinutes()).padStart(2, '0');
-    return `${hours}_${minutes}`;
-}
-
-function getFileName(serverName) {
-    const timeStr = getMoscowTimeString();
-    let countryCode = serverName;
-    if (serverName === 'WARP') {
-        countryCode = 'RU';
-    }
-    return `AWG_${countryCode}_${timeStr}.conf`;
-}
-
-function fillTemplateWithConfig(configContent, endpoint, type) {
-    let privateKey = '', publicKey = '', address = '';
-    const lines = configContent.split('\n');
-
-    for (const line of lines) {
-        if (line.startsWith('PrivateKey = ')) {
-            privateKey = line.substring('PrivateKey = '.length).trim();
-        } else if (line.startsWith('PublicKey = ')) {
-            publicKey = line.substring('PublicKey = '.length).trim();
-        } else if (line.startsWith('Address = ')) {
-            address = line.substring('Address = '.length).trim();
-        }
-    }
-
-    let template = configTemplate.value;
-    template = template.replace('{{PrivateKey}}', privateKey);
-    template = template.replace('{{Address}}', address);
-    template = template.replace('{{PublicKey}}', publicKey);
-    template = template.replace('{{Endpoint}}', endpoint);
-
-    const packets = getDynamicPackets();
-
-    if (type === 'standard') {
-        // Россия: все параметры динамические
-        template = template.replace('{{I1}}', packets.i1);
-        template = template.replace('{{I2}}', packets.i2);
-        template = template.replace('{{I3}}', packets.i3);
-        template = template.replace('{{I4}}', packets.i4);
-        template = template.replace('{{I5}}', packets.i5);
-    } else {
-        // Зарубежные: I1 статичный, I2–I5 удаляем
-        template = template.replace('{{I1}}', STATIC_I1);
-        // Удаляем строки, содержащие I2 =, I3 =, I4 =, I5 =
-        const linesArr = template.split('\n');
-        const filtered = linesArr.filter(line => {
-            const trimmed = line.trim();
-            if (trimmed.startsWith('I2 =') || trimmed.startsWith('I3 =') || 
-                trimmed.startsWith('I4 =') || trimmed.startsWith('I5 =')) {
-                return false;
+            // ========== ДИНАМИЧЕСКАЯ ГЕНЕРАЦИЯ ПАКЕТОВ I1-I5 ==========
+            class DynamicPacketGenerator {
+                constructor() {
+                    this.domains = [
+                        "yandex.ru", "ya.ru", "vk.com", "mail.ru", "ok.ru", 
+                        "dzen.ru", "rambler.ru", "avito.ru", "wildberries.ru", 
+                        "ozon.ru", "gosuslugi.ru", "sberbank.ru", "sber.ru",
+                        "tbank.ru", "russian.rt.com", "ria.ru", "tass.ru", 
+                        "lenta.ru", "rbc.ru", "kremlin.ru", "government.ru",
+                        "cbr.ru", "nalog.gov.ru", "edu.gov.ru", "mchs.gov.ru",
+                        "minzdrav.gov.ru", "mil.ru", "rosatom.ru", "aeroflot.ru",
+                        "russianrailways.ru", "mos.ru", "spb.ru",
+                        "google.com", "youtube.com", "cloudflare.com", "apple.com", 
+                        "microsoft.com", "facebook.com", "instagram.com", "whatsapp.com",
+                        "wikipedia.org", "amazon.com", "bing.com", "reddit.com", 
+                        "chatgpt.com", "netflix.com", "tiktok.com", "akamai.com", 
+                        "fastly.com", "github.com", "stackoverflow.com", "zoom.us",
+                        "discord.com", "telegram.org", "spotify.com", "twitch.tv"
+                    ];
+                    
+                    this.paths = [
+                        "/", "/mail", "/search", "/index.html", "/api/v1/status", 
+                        "/favicon.ico", "/images", "/drive", "/photos", "/video",
+                        "/news", "/login", "/account", "/settings", "/auth",
+                        "/static/style.css", "/js/main.js", "/robots.txt", "/sitemap.xml"
+                    ];
+                    
+                    this.userAgents = [
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+                        "Mozilla/5.0 (Windows NT 11.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0",
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0",
+                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:120.0) Gecko/20100101 Firefox/120.0",
+                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15",
+                        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                        "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0",
+                        "Mozilla/5.0 (Linux; Android 13; SM-S911B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.210 Mobile Safari/537.36",
+                        "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.71 Mobile Safari/537.36",
+                        "Mozilla/5.0 (Android 13; Mobile; rv:120.0) Gecko/120.0 Firefox/120.0",
+                        "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Mobile/15E148 Safari/604.1",
+                        "Mozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Mobile/15E148 Safari/604.1",
+                        "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/120.0.6099.119 Mobile/15E148 Safari/604.1"
+                    ];
+                }
+                
+                randInt(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+                
+                randBytes(n) {
+                    const bytes = new Uint8Array(n);
+                    crypto.getRandomValues(bytes);
+                    return bytes;
+                }
+                
+                toHex(bytes) {
+                    return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
+                }
+                
+                randHex(n) {
+                    return this.toHex(this.randBytes(n));
+                }
+                
+                randIp() {
+                    return `${this.randInt(10, 240)}.${this.randInt(1, 255)}.${this.randInt(1, 255)}.${this.randInt(1, 255)}`;
+                }
+                
+                randPort() {
+                    return this.randInt(1024, 65535);
+                }
+                
+                // I1: SIP REGISTER
+                makeSipRegister() {
+                    const ip = this.randIp();
+                    const srcPort = this.randPort();
+                    const branch = this.randHex(26);
+                    const callId = this.randHex(16);
+                    const fromTag = this.randHex(8);
+                    const domain = this.domains[Math.floor(Math.random() * this.domains.length)];
+                    const expires = this.randInt(3600, 7200);
+                    const cseq = this.randInt(1, 10);
+                    
+                    const sipUAs = ["Bria 5.0.0", "Zoiper 5.0.0", "MicroSIP/3.0.0", "Linphone/5.0.0"];
+                    const ua = sipUAs[Math.floor(Math.random() * sipUAs.length)];
+                    
+                    const body = `REGISTER sip:${domain} SIP/2.0\r\n` +
+                                `Via: SIP/2.0/UDP ${ip}:${srcPort};branch=z9hG4bK${branch}\r\n` +
+                                `Max-Forwards: 70\r\n` +
+                                `To: <sip:user@${domain}>\r\n` +
+                                `From: <sip:user@${domain}>;tag=${fromTag}\r\n` +
+                                `Call-ID: ${callId}\r\n` +
+                                `CSeq: ${cseq} REGISTER\r\n` +
+                                `Contact: <sip:user@${ip}:${srcPort}>\r\n` +
+                                `User-Agent: ${ua}\r\n` +
+                                `Expires: ${expires}\r\n` +
+                                `Content-Length: 0\r\n\r\n`;
+                    
+                    const bytes = new TextEncoder().encode(body);
+                    return `<b 0x${this.toHex(bytes)}>`;
+                }
+                
+                // I2: TLS ClientHello
+                makeTlsClientHello() {
+                    const sni = this.domains[Math.floor(Math.random() * this.domains.length)];
+                    const sniBytes = new TextEncoder().encode(sni);
+                    const clientRandom = this.randBytes(32);
+                    
+                    const sniExt = [
+                        0x00, 0x00,
+                        (sniBytes.length + 5) >> 8, (sniBytes.length + 5) & 0xFF,
+                        (sniBytes.length + 3) >> 8, (sniBytes.length + 3) & 0xFF,
+                        0x00,
+                        sniBytes.length >> 8, sniBytes.length & 0xFF,
+                        ...sniBytes
+                    ];
+                    
+                    const sgExt = [0x00, 0x0A, 0x00, 0x0A, 0x00, 0x08, 0x7B, 0x88, 0x65, 0x2C, 0xE4, 0x6B, 0x47, 0xAB];
+                    const epExt = [0x00, 0x0B, 0x00, 0x04, 0x03, 0x00, 0x01, 0x02];
+                    
+                    const extensions = [...sniExt, ...sgExt, ...epExt];
+                    const extLen = extensions.length;
+                    
+                    const helloBody = [
+                        ...clientRandom,
+                        0x00,
+                        0x00, 0x04,
+                        0xC0, 0x2B,
+                        0xC0, 0x2C,
+                        0x01, 0x00,
+                        extLen >> 8, extLen & 0xFF,
+                        ...extensions
+                    ];
+                    
+                    const helloLen = helloBody.length;
+                    
+                    const handshake = [
+                        0x01,
+                        0x00, 0x00, helloLen & 0xFF,
+                        0x03, 0x03,
+                        ...helloBody
+                    ];
+                    
+                    const hsLen = handshake.length;
+                    
+                    const record = [
+                        0x16, 0x03, 0x03,
+                        hsLen >> 8, hsLen & 0xFF,
+                        ...handshake
+                    ];
+                    
+                    return `<b 0x${this.toHex(new Uint8Array(record))}>`;
+                }
+                
+                // I3: TLS ServerHello
+                makeTlsServerHello() {
+                    const serverRandom = this.randBytes(32);
+                    const ciphers = [0xC02F, 0xC030, 0xCCA8, 0x009C, 0x009D, 0xC013, 0xC014];
+                    const cipher = ciphers[Math.floor(Math.random() * ciphers.length)];
+                    
+                    const helloBody = [
+                        0x03, 0x03,
+                        ...serverRandom,
+                        0x00,
+                        cipher >> 8, cipher & 0xFF,
+                        0x00,
+                        0x00, 0x00
+                    ];
+                    
+                    const handshake = [
+                        0x02,
+                        0x00, 0x00, helloBody.length,
+                        0x03, 0x03,
+                        ...serverRandom.slice(0, 28),
+                        0x00,
+                        cipher >> 8, cipher & 0xFF,
+                        0x00
+                    ];
+                    
+                    const record = [
+                        0x16, 0x03, 0x03,
+                        handshake.length >> 8, handshake.length & 0xFF,
+                        ...handshake
+                    ];
+                    
+                    return `<b 0x${this.toHex(new Uint8Array(record))}>`;
+                }
+                
+                // I4: TLS AppData
+                makeTlsAppData() {
+                    const dhPart = this.randBytes(128);
+                    const finishedData = this.randBytes(52);
+                    
+                    const keyExchangeBody = [0x10, 0x00, 0x00, 0x80, ...dhPart];
+                    const keyExchangeRecord = [0x16, 0x03, 0x03, 0x00, keyExchangeBody.length, ...keyExchangeBody];
+                    const ccsRecord = [0x14, 0x03, 0x03, 0x00, 0x01, 0x01];
+                    const finishedRecord = [0x16, 0x03, 0x03, 0x00, finishedData.length, ...finishedData];
+                    
+                    const full = [...keyExchangeRecord, ...ccsRecord, ...finishedRecord];
+                    return `<b 0x${this.toHex(new Uint8Array(full))}>`;
+                }
+                
+                // I5: HTTP GET
+                makeHttpGet() {
+                    const host = this.domains[Math.floor(Math.random() * this.domains.length)];
+                    const path = this.paths[Math.floor(Math.random() * this.paths.length)];
+                    const ua = this.userAgents[Math.floor(Math.random() * this.userAgents.length)];
+                    
+                    const body = `GET ${path} HTTP/1.1\r\n` +
+                                `Host: ${host}\r\n` +
+                                `User-Agent: ${ua}\r\n` +
+                                `Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\r\n` +
+                                `Accept-Language: en-US,en;q=0.5\r\n` +
+                                `Accept-Encoding: gzip, deflate, br\r\n` +
+                                `Connection: keep-alive\r\n\r\n`;
+                    
+                    const bytes = new TextEncoder().encode(body);
+                    return `<b 0x${this.toHex(bytes)}>`;
+                }
+                
+                generateAll() {
+                    return {
+                        i1: this.makeSipRegister(),
+                        i2: this.makeTlsClientHello(),
+                        i3: this.makeTlsServerHello(),
+                        i4: this.makeTlsAppData(),
+                        i5: this.makeHttpGet()
+                    };
+                }
             }
-            return true;
-        });
-        template = filtered.join('\n');
-    }
 
-    return template;
-}
+            // Инициализируем генератор
+            const packetGen = new DynamicPacketGenerator();
 
-function updateTemplateEndpoint(endpoint) {
-    const lines = configTemplate.value.split('\n');
-    for (let i = 0; i < lines.length; i++) {
-        if (lines[i].startsWith('Endpoint =')) {
-            lines[i] = `Endpoint = ${endpoint}`;
-            break;
-        }
-    }
-    configTemplate.value = lines.join('\n');
-}
+            // Функция для получения пакетов
+            function getDynamicPackets() {
+                return packetGen.generateAll();
+            }
 
-countryButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-        countryButtons.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        
-        currentType = this.dataset.type;
-        currentEndpoint = this.dataset.endpoint;
-        currentServerName = this.dataset.serverName;
-        
-        updateTemplateEndpoint(currentEndpoint);
-    });
-});
+            // ========== ОСНОВНАЯ ЛОГИКА ПРИЛОЖЕНИЯ ==========
 
-async function generateConfig() {
-    generateBtn.disabled = true;
-    const originalText = generateBtn.innerHTML;
-    generateBtn.innerHTML = '<span class="loading-spinner"></span> Генерация...';
-    
-    try {
-        const response = await fetch('/api/warp', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ type: currentType })
-        });
+            let currentEndpoint = 'engage.cloudflareclient.com:2408';
+            let currentType = 'standard';
+            let currentServerName = 'WARP';
 
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
+            const generateBtn = document.getElementById('generateBtn');
+            const downloadLink = document.getElementById('downloadLink');
+            const configTemplate = document.getElementById('configTemplate');
+            const resultConfig = document.getElementById('resultConfig');
+            const countryButtons = document.querySelectorAll('.country-btn');
 
-        const data = await response.json();
+            function showError(message) {
+                const toast = document.createElement('div');
+                toast.className = 'error-toast';
+                toast.textContent = `❌ ${message}`;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 4000);
+            }
 
-        if (data.success && data.content) {
-            const configContent = atob(data.content);
-            const finalConfig = fillTemplateWithConfig(configContent, currentEndpoint, currentType);
-            
-            resultConfig.value = finalConfig;
-            
-            const blob = new Blob([finalConfig], { type: 'application/octet-stream' });
-            const url = URL.createObjectURL(blob);
-            downloadLink.href = url;
-            downloadLink.download = getFileName(currentServerName);
-            downloadLink.style.display = 'inline-flex';
-            
-            setTimeout(() => {
-                generateBtn.innerHTML = originalText;
-            }, 200);
-        } else {
-            throw new Error(data.message || 'Ошибка генерации конфигурации');
-        }
-    } catch (error) {
-        console.error('Generation error:', error);
-        showError(error.message || 'Ошибка при генерации. Проверьте соединение с сервером.');
-        generateBtn.innerHTML = '❌ Ошибка';
-        setTimeout(() => {
-            generateBtn.innerHTML = originalText;
-        }, 2500);
-    } finally {
-        generateBtn.disabled = false;
-    }
-}
+            function getMoscowTimeString() {
+                const now = new Date();
+                const moscowTime = new Date(now.getTime() + (3 * 60 * 60 * 1000));
+                const hours = String(moscowTime.getUTCHours()).padStart(2, '0');
+                const minutes = String(moscowTime.getUTCMinutes()).padStart(2, '0');
+                return `${hours}_${minutes}`;
+            }
 
-generateBtn.addEventListener('click', generateConfig);
+            function getFileName(serverName) {
+                const timeStr = getMoscowTimeString();
+                let countryCode = serverName;
+                if (serverName === 'WARP') {
+                    countryCode = 'RU';
+                }
+                return `AWG_${countryCode}_${timeStr}.conf`;
+            }
 
-const defaultBtn = document.querySelector('.country-btn[data-type="standard"]');
-if (defaultBtn) {
-    defaultBtn.classList.add('active');
-    currentType = defaultBtn.dataset.type;
-    currentEndpoint = defaultBtn.dataset.endpoint;
-    currentServerName = defaultBtn.dataset.serverName;
-    updateTemplateEndpoint(currentEndpoint);
-}
-    </script>
-</body>
-</html>
+            function fillTemplateWithConfig(configContent, endpoint, type) {
+                let privateKey = '', publicKey = '', address = '';
+                const lines = configContent.split('\n');
+
+                for (const line of lines) {
+                    if (line.startsWith('PrivateKey = ')) {
+                        privateKey = line.substring('PrivateKey = '.length).trim();
+                    } else if (line.startsWith('PublicKey = ')) {
+                        publicKey = line.substring('PublicKey = '.length).trim();
+                    } else if (line.startsWith('Address = ')) {
+                        address = line.substring('Address = '.length).trim();
+                    }
+                }
+
+                let template = configTemplate.value;
+                template = template.replace('{{PrivateKey}}', privateKey);
+                template = template.replace('{{Address}}', address);
+                template = template.replace('{{PublicKey}}', publicKey);
+                template = template.replace('{{Endpoint}}', endpoint);
+
+                const packets = getDynamicPackets();
+
+                if (type === 'standard') {
+                    // Россия: все параметры динамические
+                    template = template.replace('{{I1}}', packets.i1);
+                    template = template.replace('{{I2}}', packets.i2);
+                    template = template.replace('{{I3}}', packets.i3);
+                    template = template.replace('{{I4}}', packets.i4);
+                    template = template.replace('{{I5}}', packets.i5);
+                } else {
+                    // Зарубежные: I1 статичный, I2–I5 удаляем
+                    template = template.replace('{{I1}}', STATIC_I1);
+                    const linesArr = template.split('\n');
+                    const filtered = linesArr.filter(line => {
+                        const trimmed = line.trim();
+                        if (trimmed.startsWith('I2 =') || trimmed.startsWith('I3 =') || 
+                            trimmed.startsWith('I4 =') || trimmed.startsWith('I5 =')) {
+                            return false;
+                        }
+                        return true;
+                    });
+                    template = filtered.join('\n');
+                }
+
+                return template;
+            }
+
+            function updateTemplateEndpoint(endpoint) {
+                const lines = configTemplate.value.split('\n');
+                for (let i = 0; i < lines.length; i++) {
+                    if (lines[i].startsWith('Endpoint =')) {
+                        lines[i] = `Endpoint = ${endpoint}`;
+                        break;
+                    }
+                }
+                configTemplate.value = lines.join('\n');
+            }
+
+            countryButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    countryButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    currentType = this.dataset.type;
+                    currentEndpoint = this.dataset.endpoint;
+                    currentServerName = this.dataset.serverName;
+                    
+                    updateTemplateEndpoint(currentEndpoint);
+                });
+            });
+
+            async function generateConfig() {
+                generateBtn.disabled = true;
+                const originalText = generateBtn.innerHTML;
+                generateBtn.innerHTML = '<span class="loading-spinner"></span> Генерация...';
+                
+                try {
+                    const response = await fetch('/api/warp', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ type: currentType })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+
+                    const data = await response.json();
+
+                    if (data.success && data.content) {
+                        const configContent = atob(data.content);
+                        const finalConfig = fillTemplateWithConfig(configContent, currentEndpoint, currentType);
+                        
+                        resultConfig.value = finalConfig;
+                        
+                        const blob = new Blob([finalConfig], { type: 'application/octet-stream' });
+                        const url = URL.createObjectURL(blob);
+                        downloadLink.href = url;
+                        downloadLink.download = getFileName(currentServerName);
+                        downloadLink.style.display = 'inline-flex';
+                        
+                        setTimeout(() => {
+                            generateBtn.innerHTML = originalText;
+                        }, 200);
+                    } else {
+                        throw new Error(data.message || 'Ошибка генерации конфигурации');
+                    }
+                } catch (error) {
+                    console.error('Generation error:', error);
+                    showError(error.message || 'Ошибка при генерации. Проверьте соединение с сервером.');
+                    generateBtn.innerHTML = '❌ Ошибка';
+                    setTimeout(() => {
+                        generateBtn.innerHTML = originalText;
+                    }, 2500);
+                } finally {
+                    generateBtn.disabled = false;
+                }
+            }
+
+            generateBtn.addEventListener('click', generateConfig);
+
+            const defaultBtn = document.querySelector('.country-btn[data-type="standard"]');
+            if (defaultBtn) {
+                defaultBtn.classList.add('active');
+                currentType = defaultBtn.dataset.type;
+                currentEndpoint = defaultBtn.dataset.endpoint;
+                currentServerName = defaultBtn.dataset.serverName;
+                updateTemplateEndpoint(currentEndpoint);
+            }
+        </script>
+    </body>
+    </html>
