@@ -158,6 +158,7 @@ const ENDPOINT_MAP = {
   'fr':       { deviceType: 'computer', endpoint: '147.135.212.152:5242', name: 'Roubaix, FR' },
   'pl':       { deviceType: 'computer', endpoint: '51.38.153.32:5242', name: 'Warsaw, PL' },
   'de':       { deviceType: 'computer', endpoint: '51.38.107.252:5242', name: 'Frankfurt, DE' },
+  'ro':       { deviceType: 'computer', endpoint: '107.149.201.95:5242', name: 'Bucharest, RO' },
 };
 
 export default async function handler(req, res) {
